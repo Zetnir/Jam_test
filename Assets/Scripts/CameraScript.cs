@@ -14,21 +14,40 @@ public class CameraScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        if(gameManager.currentPhase == GameManager.GamePhase.RoomMenu)
+        switch(gameManager.currentPhase)
         {
-            nPlayers = gameManager.nPlayersConnected;
-            Players = gameManager.players;
+            case GameManager.GamePhase.Menu:
+                break;
+            case GameManager.GamePhase.RoomMenu:
+                RoomMenu();
+                break;
+            case GameManager.GamePhase.InGame:
+                InGame();
+                break;
+            case GameManager.GamePhase.Pause:
+                break;
+            case GameManager.GamePhase.EndGame:
+                break;
         }
 
 
-        if(gameManager.currentPhase == GameManager.GamePhase.InGame)
-        {
+
+
+    }
+
+    void RoomMenu()
+    {
+            nPlayers = gameManager.nPlayersConnected;
+            Players = gameManager.players;
+    }
+
+    void InGame()
+    {
             playersPosition = Vector3.zero;
             distancePlayers = 0f;
             for (int i = 0; i < nPlayers; i++)
@@ -45,7 +64,7 @@ public class CameraScript : MonoBehaviour {
             }
             playersPosition /= nPlayers;
             distancePlayers /= nPlayers;
-            if(nPlayers > 0)
+            if (nPlayers > 0)
             {
                 camPos = new Vector3(0, 4 + (0.5f * distancePlayers), -5f - (0.5f * distancePlayers));
                 transform.position = Vector3.Lerp(transform.position, playersPosition + camPos, cameraDelay * Time.deltaTime);
@@ -56,10 +75,5 @@ public class CameraScript : MonoBehaviour {
                 transform.position = Vector3.Lerp(transform.position, camPos, cameraDelay * Time.deltaTime);
 
             }
-
-        }
-
-
-
     }
 }

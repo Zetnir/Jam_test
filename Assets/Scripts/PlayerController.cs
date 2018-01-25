@@ -99,8 +99,8 @@ public class PlayerController : MonoBehaviour
         bool jump = gameManager.jump[numController];
         bool punch = gameManager.fire1[numController];
         bool grab = gameManager.fire2[numController];
-        float trigger = gameManager.triggerR[numController];
-        bool special = gameManager.special[numController];
+        float trigger = gameManager.triggers[numController];
+        bool special = gameManager.R1[numController];
 
         if (!isGrabbing && !isGrabbed && !isPunching)
         {
