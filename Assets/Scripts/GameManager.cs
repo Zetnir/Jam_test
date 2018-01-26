@@ -92,6 +92,8 @@ public class GameManager : MonoBehaviour {
 
         //Makes the cursor invisible
         Cursor.visible = false;
+
+        
     }
 
     //Set the input from the controllers for all of the players
@@ -168,7 +170,7 @@ public class GameManager : MonoBehaviour {
                 {
                     //Launch the game
                     currentPhase = GamePhase.InGame;
-                    SceneManager.LoadScene("InGame");
+                    SceneManager.LoadScene("PreloadingScene");
                 }
                 // if the player wasn't ready then it put the player to the state ready
                 else if (!isReady[j])
@@ -240,6 +242,7 @@ public class GameManager : MonoBehaviour {
             {
                 players[playersIndex[i]] = (GameObject)Instantiate(objCharacters[characterChoseByPlayer_[i]], new Vector3(-5 + (playersIndex[i] * 2), 1, 0), Quaternion.Euler(Vector3.zero));
                 players[playersIndex[i]].gameObject.GetComponent<PlayerController>().numController = i;
+                players[playersIndex[i]].gameObject.GetComponent<PlayerController>().enabled = true;
                 nPlayersCreated++;
             }
             if(wantToMove[i])
@@ -248,9 +251,15 @@ public class GameManager : MonoBehaviour {
                 wantToMove[i] = false;
             }
         }
-
     }
 
+    void PauseMenu()
+    {
+        for(int i =0; i <MAX_PLAYERS; i++)
+        {
+
+        }
+    }
     void RestartGame()
     {
         for(int i = 0; i < MAX_PLAYERS; i++)

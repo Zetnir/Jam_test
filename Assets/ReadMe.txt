@@ -7,13 +7,14 @@ cd NomFichier : voyage vers un nouveau dossier
 git init
 git remote add Nom Adresse
 git clone Adresse
+git pull -u jam master
 
 -Sauvegarder :(toujours sauvegarder avec de pull ou push)
 git add -A
-git commit -m "Ton message soit précis"
+git commit -m "Ton message : soit précis mais pas trop long"
 
--Partage des données sur le serveur
-git pull : MAJ des données
-git push envoie des données
+	-Partage des données sur le serveur
+	git pull (: MAJ des données)
+	git push (: envoie des données)
 
 

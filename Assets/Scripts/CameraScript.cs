@@ -14,6 +14,7 @@ public class CameraScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         DontDestroyOnLoad(gameObject);
 	}
 	
